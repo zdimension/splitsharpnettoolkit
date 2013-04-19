@@ -1,0 +1,9 @@
+﻿
+
+library Browser
+{
+	method Alert(var:string message)
+	{
+
+	}
+}

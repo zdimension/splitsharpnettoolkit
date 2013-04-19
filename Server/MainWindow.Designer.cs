@@ -60,7 +60,7 @@
             // button2
             // 
             this.button2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button2.Location = new System.Drawing.Point(374, 47);
+            this.button2.Location = new System.Drawing.Point(374, 46);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(356, 23);
             this.button2.TabIndex = 2;
@@ -69,13 +69,16 @@
             // 
             // txLog
             // 
+            this.txLog.BackColor = System.Drawing.SystemColors.WindowText;
             this.txLog.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txLog.ForeColor = System.Drawing.SystemColors.Window;
             this.txLog.Location = new System.Drawing.Point(13, 76);
             this.txLog.Multiline = true;
             this.txLog.Name = "txLog";
             this.txLog.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txLog.Size = new System.Drawing.Size(716, 297);
             this.txLog.TabIndex = 3;
+            this.txLog.Text = "Split# Web Server 0.1 - Copyright © zDimension 2013\r\n";
             this.txLog.TextChanged += new System.EventHandler(this.txLog_TextChanged);
             // 
             // MainWindow

@@ -74,6 +74,7 @@
     <None Include="bin\Debug\conf\mime.dat" />
     <None Include="bin\Debug\conf\tmp.dat" />
     <None Include="bin\Debug\conf\vfold.dat" />
+    <None Include="bin\Debug\libs\browser.ssc" />
     <None Include="bin\Debug\Server.vshost.exe.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -92,6 +93,7 @@
     <Content Include="bin\Debug\www\index.htm" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="bin\Debug\db\mysql\" />
     <Folder Include="bin\Debug\wwwinfo\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

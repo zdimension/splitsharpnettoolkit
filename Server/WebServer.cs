@@ -16,7 +16,7 @@ namespace Server
         public delegate void LogSentEventHandler(object sender, string log);
         public event LogSentEventHandler LogSent;
 
-        private void SendLog(string l)
+        public void SendLog(string l)
         {
             LogSent(this, l);
             /*LogSentEventHandler temp = LogSent;
@@ -293,7 +293,7 @@ namespace Server
             }
             else
             {
-                SendToBrowser(Encoding.ASCII.GetBytes(SplitPageInterpreter.GetHTMLFromSSHTML(sData)), ref mySocket);
+                SendToBrowser(Encoding.ASCII.GetBytes(SplitPageInterpreter.GetHTMLFromSSHTML(sData, this)), ref mySocket);
             }
         }
 
@@ -498,7 +498,7 @@ namespace Server
                         fs.Close();
 
                         SendHeader(sHttpVersion, sMimeType, iTotBytes, " 200 OK", ref mySocket);
-                        bytes = Encoding.ASCII.GetBytes(SplitPageInterpreter.GetHTMLFromSSHTML(Encoding.ASCII.GetString(bytes)));
+                        bytes = Encoding.ASCII.GetBytes(SplitPageInterpreter.GetHTMLFromSSHTML(Encoding.ASCII.GetString(bytes), this));
                         SendToBrowser(bytes, ref mySocket);
                         //mySocket.Send(bytes, bytes.Length,0);
 
