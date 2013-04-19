@@ -5,3 +5,10 @@ c:\users\tom2\documents\visual studio 2010\Projects\SplitSharp Network Toolkit\S
 c:\users\tom2\documents\visual studio 2010\Projects\SplitSharp Network Toolkit\Server\bin\Debug\Server.pdb
 c:\users\tom2\documents\visual studio 2010\Projects\SplitSharp Network Toolkit\Server\obj\x86\Debug\Server.exe
 c:\users\tom2\documents\visual studio 2010\Projects\SplitSharp Network Toolkit\Server\obj\x86\Debug\Server.pdb
+C:\Users\Tom2\Documents\1-Documents\Split# Network Toolkit\splitsharpnettoolkit\Server\obj\x86\Debug\Server.exe
+C:\Users\Tom2\Documents\1-Documents\Split# Network Toolkit\splitsharpnettoolkit\Server\obj\x86\Debug\Server.pdb
+C:\Users\Tom2\Documents\1-Documents\Split# Network Toolkit\splitsharpnettoolkit\Server\bin\Debug\Server.exe
+C:\Users\Tom2\Documents\1-Documents\Split# Network Toolkit\splitsharpnettoolkit\Server\bin\Debug\Server.pdb
+C:\Users\Tom2\Documents\1-Documents\Split# Network Toolkit\splitsharpnettoolkit\Server\obj\x86\Debug\Server.MainWindow.resources
+C:\Users\Tom2\Documents\1-Documents\Split# Network Toolkit\splitsharpnettoolkit\Server\obj\x86\Debug\Server.Properties.Resources.resources
+C:\Users\Tom2\Documents\1-Documents\Split# Network Toolkit\splitsharpnettoolkit\Server\obj\x86\Debug\Server.csproj.GenerateResource.Cache

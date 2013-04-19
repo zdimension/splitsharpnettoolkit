@@ -9,82 +9,74 @@ namespace Server
 {
     class SplitPageInterpreter
     {
+        List<Variable> Vars = new List<Variable>();
+
         public static string GetHTMLFromSSHTML(string page)
         {
            
             string pg = page;
             //pg = pg.Replace("TEST", "TESTSPLIT");
-            while (pg.IndexOf("<s#") != -1)
+            while (pg.Contains("<s#c") || pg.Contains("<s#"))
             {
-                int i = pg.IndexOf("<s#");
-                MessageBox.Show(pg);
-                string abc = GetTextBetween(pg, "<s#", "s#>");
-                bool a = false;
-                int abcd;
-                for (int j = i; j < pg.Length; j++)
+                bool s = false;
+                bool s1 = false;
+                bool s2 = false;
+                bool s3 = false;
+                bool split = false;
+                bool splitc = false;
+                int j1 = 0;
+                int j2 = 0;
+                string splitcode = "";
+                for (int i = 0; i < pg.Length; i++)
                 {
-                    //if (!a)
-                    //{
-                        if (pg[j] == 's')
-                        {
-
-                        }
-                        else if (pg[j] == '#')
-                        {
-
-                        }
-                        else if (pg[j] == '>')
-                        {
-                            a = true;
-                        }
-                        else
-                        {
-                            if (a)
-                            {
-                                abcd = i;
-                                break;
-                            }
-                        }
-                    //}
-                }
-
-                MessageBox.Show(abc);
-                break;
-
-                /*string a = "";
-                string b = "";
-                string c = "";
-
-                for (int j = i; j < pg.Length; j++)
-                {
-                    if (pg[j] == 's')
+                    if (split)
                     {
-                        if (b == "")
-                        {
-                            b += pg[j];
-                        }
                     }
-                    else if (pg[j] == '#')
+                    else if (splitc)
                     {
-                        if (b != "")
-                        {
-                            b += pg[j];
-                        }
-                    }
-                    else if (pg[j] == '>')
-                    {
-                        if (b != "")
-                        {
-                            b += pg[j];
-                            break;
-                        }
                     }
                     else
                     {
-                        a += pg[j];
+                        if (pg[i] == '<')
+                        {
+                            s = true;
+                        }
+                        else if (pg[i] == 's')
+                        {
+                            if (s)
+                                s1 = true;
+                        }
+                        else if (pg[i] == '#')
+                        {
+                            if (s1)
+                                s2 = true;
+                        }
+                        else if (pg[i] == 'c')
+                        {
+                            if (s2)
+                            {
+                                s3 = true;
+                                splitc = true;
+                                s = false;
+                                s1 = false;
+                                s2 = false;
+                                s3 = false;
+                            }
+                        }
+                        else
+                        {
+                            if (s2)
+                            {
+                                s3 = true;
+                                split = true;
+                                s = false;
+                                s1 = false;
+                                s2 = false;
+                                s3 = false;
+                            }
+                        }
                     }
-                    c += pg[j];
-                }*/
+                }
             }
             return pg;
         }
