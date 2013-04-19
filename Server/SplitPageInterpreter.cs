@@ -191,6 +191,10 @@ namespace Server
                     string c = lines[i];
                     c = c.Replace("<s#", "");
                     c = c.Replace("s#>", "");
+                    if (c.Split(';').Count > 0)
+                    {
+
+                    }
                     if (c.StartsWith("var:"))
                     {
                         if (!c.EndsWith(";"))
