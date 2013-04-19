@@ -1,0 +1,7 @@
+c:\users\tom2\documents\visual studio 2010\Projects\SplitSharp Network Toolkit\Server\obj\x86\Debug\Server.MainWindow.resources
+c:\users\tom2\documents\visual studio 2010\Projects\SplitSharp Network Toolkit\Server\obj\x86\Debug\Server.Properties.Resources.resources
+c:\users\tom2\documents\visual studio 2010\Projects\SplitSharp Network Toolkit\Server\obj\x86\Debug\Server.csproj.GenerateResource.Cache
+c:\users\tom2\documents\visual studio 2010\Projects\SplitSharp Network Toolkit\Server\bin\Debug\Server.exe
+c:\users\tom2\documents\visual studio 2010\Projects\SplitSharp Network Toolkit\Server\bin\Debug\Server.pdb
+c:\users\tom2\documents\visual studio 2010\Projects\SplitSharp Network Toolkit\Server\obj\x86\Debug\Server.exe
+c:\users\tom2\documents\visual studio 2010\Projects\SplitSharp Network Toolkit\Server\obj\x86\Debug\Server.pdb
