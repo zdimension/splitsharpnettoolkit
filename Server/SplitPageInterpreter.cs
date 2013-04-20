@@ -156,87 +156,132 @@ namespace Server
             {
                 for (int x = 0; x < lines[i].Length/* - 1*/; x++)
                 {
-
-                    if (lines[i][x] == '<' && lines[i][x + 1] == 's' && lines[i][x + 2] == '#')
+                    try
                     {
-                        parse = true; //Begin parsing.
-                    }
-                    else if (lines[i][x] == '#' && lines[i][x + 1] == 's' && lines[i][x + 2] == '>')
-                    {
-                        parse = false; //End parsing.
-                    }
-
-                    if (parse)
-                    {
-                       
-                    }
-                    else
-                    {
-                        if (lines[i][x] == '>')
+                        if (lines[i][x] == '<' && lines[i][x + 1] == 's' && lines[i][x + 2] == '#')
                         {
-                            //MessageBox.Show("" + lines[i][x]);
-                            DOCUMENT = DOCUMENT + lines[i][x]; //Add char to document.
+                            parse = true; //Begin parsing.
+                        }
+
+                        else if (lines[i][x] == '#' && lines[i][x + 1] == 's' && lines[i][x + 2] == '>')
+                        {
+                            parse = false; //End parsing.
+                        }
+
+                        if (parse)
+                        {
+
                         }
                         else
                         {
-                            DOCUMENT = DOCUMENT + lines[i][x]; //Add char to document.
-                        }
-                    }
-                }
-
-                if (parse)
-                {
-                    //This will parse line by line.
-                    //Add the result of the parsing to the DOCUMENT var.
-                    string c = lines[i];
-                    c = c.Replace("<s#", "");
-                    c = c.Replace("s#>", "");
-                    if (c.Split(';').Count > 0)
-                    {
-
-                    }
-                    if (c.StartsWith("var:"))
-                    {
-                        if (!c.EndsWith(";"))
-                        {
-                            srv.SendLog("Error in Split# code!");
-                            DOCUMENT += "<h1>Split# Error</h1>\n";
-                            DOCUMENT += "<h2>Line " + (i + 1) + ": Unexpected ';'</h2>";
-                            parse = false;
-                            continue;
-                        }
-                        else
-                        {
-                            if (c.Contains("="))
+                            if (lines[i][x] == '>')
                             {
-                                string type = "";
-                                string name = "";
-                                string value = "";
-
-                                string left = "";
-                                string right = "";
-                                left = c.Split(' ')[0];
-                                right = c.Split(' ')[1];
-
-                                type = c.Split(' ')[0].Split(':')[1];
-                                name = c.Split(' ')[1];
-                                value = c.Split(' ')[3];
-                                value = value.Replace(";", "");
-                                value = value.Replace("\"", "");
-                                Vars.Add(new Variable() { Name = name, Value = value, Type = VarType.String });
+                                //MessageBox.Show("" + lines[i][x]);
+                                DOCUMENT = DOCUMENT + lines[i][x]; //Add char to document.
                             }
                             else
                             {
-
+                                DOCUMENT = DOCUMENT + lines[i][x]; //Add char to document.
                             }
                         }
                     }
-                    else if (c.StartsWith("echo"))
+                    catch (IndexOutOfRangeException)
                     {
-                        c = c.Replace(";", "");
-                        string varname = c.Split(' ')[1];
-                        DOCUMENT += Vars.Find(item => item.Name == varname).Value;
+                        if (lines[i] == "<s#")
+                        {
+                            parse = true;
+                        }
+                        else if (lines[i] == "s#>")
+                        {
+                            parse = false;
+                        }
                     }
+                }
+                try
+                {
+                    if (parse)
+                    {
+                        //This will parse line by line.
+                        //Add the result of the parsing to the DOCUMENT var.
+                        string c = lines[i];
+                        c = c.Replace("<s#", "");
+                        c = c.Replace("s#>", "");
+                        bool a = false;
+                        string[] aba = c.Split(';');
+                        int j = aba.Count();
+                        string abc = c.Split(';')[0];
+                        string abd = c.Split(';')[1];
+                        if (j > 2 && j != 2)
+                        {
+
+                        }
+                        else
+                        {
+                            a = true;
+                        }
+                        if (c.StartsWith("var:"))
+                        {
+                            if (!c.EndsWith(";"))
+                            {
+                                srv.SendLog("Error in Split# code!");
+                                DOCUMENT += "<h1>Split# Error</h1>\n";
+                                DOCUMENT += "<h2>Line " + (i + 1) + ": Unexpected ';'</h2>";
+                                parse = false;
+                                continue;
+                            }
+                            else
+                            {
+                                if (c.Contains("="))
+                                {
+                                    string type = "";
+                                    string name = "";
+                                    string value = "";
+
+                                    string left = "";
+                                    string right = "";
+                                    left = c.Split(' ')[0];
+                                    right = c.Split(' ')[1];
+
+                                    type = c.Split(' ')[0].Split(':')[1];
+                                    name = c.Split(' ')[1];
+                                    /*value = c.Split(' ')[3];
+                                    value = value.Replace(";", "");
+                                    value = value.Replace("\"", "");*/
+                                    int abcde = c.LastIndexOf('"');
+                                    for (int abcd = c.IndexOf('"'); abcd < abcde; abcd++)
+                                    {
+                                        if (c[abcd] == '"')
+                                        {
+                                            continue;
+                                        }
+                                        else
+                                        {
+                                            value += c[abcd];
+                                        }
+                                    }
+                                    Vars.Add(new Variable() { Name = name, Value = value, Type = VarType.String });
+
+                                }
+                                else
+                                {
+
+                                }
+                            }
+                        }
+                        else if (c.StartsWith("echo"))
+                        {
+                            c = c.Replace(";", "");
+                            string varname = c.Split(' ')[1];
+                            DOCUMENT += Vars.Find(item => item.Name == varname).Value;
+                        }
+                        if (a)
+                        {
+                            parse = false;
+                        }
+                    }
+                }
+                catch (IndexOutOfRangeException)
+                {
                 }
             }
             //You should send the var DOCUMENT over the socket connection.
